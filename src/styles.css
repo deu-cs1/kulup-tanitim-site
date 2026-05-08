@@ -230,6 +230,84 @@ button {
   background: #9ce7ca;
 }
 
+.missing-coordinators {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 34px;
+  align-items: end;
+  padding: 72px max(20px, calc((100vw - 1180px) / 2));
+  background: #171817;
+  color: #fffdfa;
+}
+
+.missing-coordinators .section-label {
+  margin-bottom: 14px;
+}
+
+.missing-copy h2 {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(30px, 4vw, 54px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.missing-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.missing-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 152px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 24px;
+  background: rgba(255, 253, 250, 0.06);
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.missing-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #9ce7ca;
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 260ms ease;
+}
+
+.missing-card:hover {
+  border-color: rgba(156, 231, 202, 0.36);
+  background: rgba(255, 253, 250, 0.09);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.2);
+}
+
+.missing-card:hover::before {
+  transform: scaleY(1);
+}
+
+.missing-card span {
+  display: block;
+  color: #9ce7ca;
+  font-weight: 850;
+}
+
+.missing-card h3 {
+  margin: 36px 0 0;
+  font-size: clamp(22px, 2.5vw, 30px);
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
 .stats-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -553,11 +631,24 @@ button {
     font-size: clamp(42px, 13vw, 64px);
   }
 
+  .missing-coordinators,
   .stats-strip,
   .split,
   .narrative,
   .cta {
     grid-template-columns: 1fr;
+  }
+
+  .missing-coordinators {
+    padding: 58px 20px;
+  }
+
+  .missing-list {
+    grid-template-columns: 1fr;
+  }
+
+  .missing-card {
+    min-height: 130px;
   }
 
   .stat-item {

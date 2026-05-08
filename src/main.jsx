@@ -77,6 +77,7 @@ const content = {
 const contactAlert = 'İletişim koordinatörümüz olmadığı için mail kabul edemiyoruz :/'
 const socialAlert =
   'Sosyal medya koordinatörümüz olmadığı için sosyal medya kanallarından iletişime geçemiyoruz :/'
+const missingCoordinatorRoles = ['İletişim Koordinatörlüğü', 'Sosyal Medya Koordinatörlüğü']
 
 function InstagramIcon() {
   return (
@@ -291,6 +292,34 @@ function Reveal({ children, delay = 0 }) {
   )
 }
 
+function MissingCoordinators() {
+  return (
+    <section className="missing-coordinators" aria-labelledby="missing-coordinators-title">
+      <Reveal>
+        <div className="missing-copy">
+          <span className="section-label">Eksik Roller</span>
+          <h2 id="missing-coordinators-title">Şu an destek bekleyen koordinatörlükler.</h2>
+        </div>
+      </Reveal>
+      <div className="missing-list">
+        {missingCoordinatorRoles.map((role, index) => (
+          <Reveal key={role} delay={index * 0.07}>
+            <motion.article
+              className="missing-card"
+              whileHover={{ y: -6, scale: 1.01 }}
+              whileTap={{ scale: 0.985 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{role}</h3>
+            </motion.article>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function App() {
   const socialLinks = useMemo(
     () => [
@@ -307,6 +336,8 @@ function App() {
       <Header />
       <main id="top">
         <ScrollVideoHero />
+
+        <MissingCoordinators />
 
         <section className="stats-strip">
           {content.stats.map(([value, label], index) => (
