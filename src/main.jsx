@@ -14,6 +14,9 @@ import {
   X,
 } from 'lucide-react'
 import './styles.css'
+import brandMarkUrl from '../assets/brand-mark.svg'
+import heroVideoUrl from '../assets/hero-section-scroll-animation.mp4'
+import programVisualUrl from '../assets/program-visual.svg'
 
 const content = {
   name: 'Kulüp',
@@ -153,7 +156,7 @@ function ScrollVideoHero() {
         <motion.video
           ref={videoRef}
           className="hero-video"
-          src="/assets/hero-section-scroll-animation.mp4"
+          src={heroVideoUrl}
           muted
           playsInline
           preload="auto"
@@ -236,7 +239,7 @@ function Header() {
       transition={{ duration: 0.45, ease: 'easeOut' }}
     >
       <a className="brand" href="#top" aria-label="Ana sayfa">
-        <img src="/assets/brand-mark.svg" alt="" />
+        <img src={brandMarkUrl} alt="" />
         <span>{content.name}</span>
       </a>
       <nav className={open ? 'open' : ''}>
@@ -437,7 +440,7 @@ function ProgramSection() {
     <section className="section narrative" id="program">
       <div className="visual-panel" ref={visualRef}>
         <motion.img
-          src="/assets/program-visual.svg"
+          src={programVisualUrl}
           alt=""
           style={{ y: visualY, rotate: visualRotate }}
           whileHover={{ scale: 1.025 }}
